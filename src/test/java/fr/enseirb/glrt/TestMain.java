@@ -17,6 +17,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.*;
+
 
 /**
  *
@@ -35,8 +39,12 @@ public class TestMain {
            
             URL google = new URL ("http://localhost:4567/account/1000/create");
             try{
-            URLConnection yc = google.openConnection();
-            yc.
+            HttpURLConnection yc = (HttpURLConnection) google.openConnection();
+            yc.setRequestMethod("POST");
+            
+            String place="avenue Collegno";
+            String capacity="40";
+            String query = "";
             
             
             //StringBuffer bf = new StringBuffer();
@@ -46,7 +54,8 @@ public class TestMain {
                 bf.append(inputLine + "\n");
             }
             in.close();*/
-            assertEquals("Hello World\n", bf.toString());
+            assertEquals(200,URLConnection.getURL.getResponsecode);// renvoyer le code erreur
+            
         } catch (Exception e) {
             fail();
         }
