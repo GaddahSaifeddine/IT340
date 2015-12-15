@@ -5,6 +5,7 @@
  */
 package fr.enseirb.glrt;
 
+import fr.enseirb.glrt.buisness.Labviews;
 import fr.enseirb.glrt.buisness.Workshopsviews;
 import static spark.Spark.*;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -19,6 +20,8 @@ public class Main {
         MustacheTemplateEngine mustacheTemplateEngine = new MustacheTemplateEngine();
         post("/account/:labid/create",(req,res) -> new Workshopsviews().createWorkshops(req, res),mustacheTemplateEngine);
         get("/account/:labid/create",(req,res)  -> new Workshopsviews().getView(req,res),mustacheTemplateEngine);
+        get("/account/:name/create",(req,res)  -> new Labviews().getView(req,res),mustacheTemplateEngine);
+        post("/account/create",(req,res) -> new Labviews().createlabs(req, res),mustacheTemplateEngine);
         awaitInitialization();
     }
 

@@ -136,8 +136,106 @@ public class Crud {
             
          }
      }
+     public List<Lab> getLab (){
+
+      
+
+ResultSet rs; 
+
+       try { 
+
+             String getLab = "SELECT * FROM LABORATOIRE = "; 
+
+ 
+
+ 
+
+            PreparedStatement preparedStatement = con.prepareStatement(getLab); 
+
+            // preparedStatement.setObject(1,wid); 
+
+              rs = preparedStatement.executeQuery(); 
+
+             
+
+             List<Lab> returnvaluetrois = new ArrayList<>();
+
+             Lab l =new Lab();
+
+             while (rs.next()) {
+
+                 l.setLabid((UUID.fromString(rs.getString("ID"))));
+
+                 l.setName((rs.getString("LabName")));
+
+                 l.setEmail(rs.getString("Email"));
+
+                 l.setPassword(rs.getString("Password"));
+
+                 l.setConnexiontime();
+
+                 returnvaluetrois.add(l);                 
+
+                 
+
+             }
+
+             return returnvaluetrois;
+
+             
+
+       } catch (SQLException e){
+
+             System.out.println(e.getMessage()); 
+
+             return null;
+
+         }
+
+}
+
+public void addLab (Lab Labo ){
+
+        
+
+      
+
+      try { 
+
+            String addLab = "INSERT INTO Labo (name,email,,password,connexiontime,labid)"+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)"; 
+
+ 
+
+ 
+
+            PreparedStatement preparedStatement = con.prepareStatement(addLab); 
+
+            preparedStatement.setObject(1,Labo.getName().toString()); 
+
+            preparedStatement.setObject(2,Labo.getEmail()); 
+
+            preparedStatement.setObject(3,Labo.getPassword()); 
+
+            preparedStatement.setObject(4,Labo.getConnexiontime());
+
+            preparedStatement.setObject(5,Labo.getLabid()); 
+
+             preparedStatement.execute(); 
+
+                      
+
+        } catch (SQLException e) { 
+
+            System.out.println(e.getMessage()); 
+
+           
+
+        }
+
+}
+
+}
     
     
 
-                }
-   
+                

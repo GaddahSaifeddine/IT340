@@ -36,6 +36,8 @@ public class TestMain {
             URL google = new URL ("http://localhost:4567/account/1000/create");
             try{
             URLConnection yc = google.openConnection();
+            yc.
+            
             
             //StringBuffer bf = new StringBuffer();
            /* BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));

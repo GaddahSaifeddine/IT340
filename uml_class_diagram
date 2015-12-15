@@ -1,0 +1,54 @@
+@startuml
+
+package fr.enseirb.glrt.buisness {
+
+	 class Labviews {
+		- ModelAndView getView()
+		- ModelAndView createLabs()
+	}
+         class WorkShopViews {
+                - ModelAndView getView()
+                - ModelAndView createWorkshops()
+}
+}
+package fr.enseirb.glrt.dao.models {
+
+	 class Crud {
+                - List <Workshops> getAtelier
+		- void addAtelier 
+                - List <Lab> getLab
+                - void addLab
+	}
+         class Lab {
+                - String name
+                - String email               
+                - String password
+                - Date connexionTime
+                - UUID labid
+}
+
+        class Workshops {
+                - String Atelier
+                - String Thème
+                - String Animateur 
+                - String Description
+                - UUID labid
+                - Date date
+                - String Place
+                - UUID wid
+                - int hours
+                - int capacity
+                - Boolean resa
+}
+           class Connexion {
+                - Connection getConnexion()
+}
+
+Labviews <|-- Crud
+Labviews <|-- Connexion
+WorkShopViews <|-- Crud
+WorkShopViews <|-- Connexion
+Labviews <|-- Lab
+WorkShopViews <|-- Workshops
+
+@enduml
